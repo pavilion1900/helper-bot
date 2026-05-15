@@ -2,7 +2,7 @@ package org.job;
 
 import org.junit.jupiter.api.Test;
 
-class AppTest {
+class ApplicationTest {
 
     @Test
     void appHasAGreeting() {

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: helper-bot
+    description: "REST API for helper-bot"
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
