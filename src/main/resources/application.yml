@@ -9,4 +9,18 @@ spring:
 spring:
   config:
     activate:
+      on-profile: local
+
+telegram:
+  bot:
+    token: token
+
+---
+spring:
+  config:
+    activate:
       on-profile: test
+
+telegram:
+  bot:
+    token: token
