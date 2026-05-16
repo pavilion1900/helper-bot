@@ -5,6 +5,10 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local}
 
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN:token}
+
 ---
 spring:
   config:
