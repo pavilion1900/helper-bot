@@ -49,16 +49,12 @@ public class UpdateConsumer implements LongPollingSingleThreadUpdateConsumer {
             User user = update.getMessage().getFrom();
             log.info("Get message {} from {}", textMessage, chatId);
 
-            if (START.equals(textMessage)) {
-                sendMainMenu(chatId);
-            } else if (KEYBOARD.equals(textMessage)) {
-                sendReplyKeyboard(chatId);
-            } else if (HELLO.equals(textMessage)) {
-                sendMyName(chatId, user);
-            } else if (IMAGE.equals(textMessage)) {
-                sendImage(chatId);
-            } else {
-                sendMessage(chatId, "I don't understand you");
+            switch (textMessage) {
+                case START -> sendMainMenu(chatId);
+                case KEYBOARD -> sendReplyKeyboard(chatId);
+                case HELLO -> sendMyName(chatId, user);
+                case IMAGE -> sendImage(chatId);
+                case null, default -> sendMessage(chatId, "I don't understand you");
             }
         } else if (update.hasCallbackQuery()) {
             handleCallbackQuery(update.getCallbackQuery());

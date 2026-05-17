@@ -13,6 +13,18 @@ telegram:
 spring:
   config:
     activate:
+      on-profile: proxy
+
+proxy:
+  host: ${PROXY_HOST:host}
+  port: ${PROXY_PORT:port}
+  user: ${PROXY_USER:user}
+  password: ${PROXY_PASSWORD:password}
+
+---
+spring:
+  config:
+    activate:
       on-profile: local
 
 telegram:
