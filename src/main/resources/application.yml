@@ -1,3 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'info, health, prometheus'
+      base-path: /admin
+  prometheus:
+    metrics:
+      export:
+        enabled: ${ENABLE_PROMETHEUS:true}
+
 spring:
   application:
     name: helper-bot

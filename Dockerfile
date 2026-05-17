@@ -20,6 +20,9 @@ RUN ./gradlew bootJar --no-daemon
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
+# Install curl for health checks
+RUN apk add --no-cache curl
+
 # Create a non-root user for security
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
@@ -31,4 +34,4 @@ COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-jar", "app.jar"]
